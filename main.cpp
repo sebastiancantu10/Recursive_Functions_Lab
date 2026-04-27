@@ -2,6 +2,62 @@
 #include <string>
 using namespace std;
 
+//RECURSIVE FUNCTION LAB PART 2
+// 1. Given a string input, calculate length of the string.
+int stringLength(string str) {
+    if (str == "") {
+        return 0;
+    }
+
+    return 1 + stringLength(str.substr(1));
+}
+
+// 2. Given a collection of characters and a positive integer k,
+// print all possible strings of length k that can be formed.
+void printStrings(char collection[], int size, string current, int k) {
+    if (k == 0) {
+        cout << current << endl;
+        return;
+    }
+
+    for (int i = 0; i < size; i++) {
+        printStrings(collection, size, current + collection[i], k - 1);
+    }
+}
+
+int main() {
+
+    // String length test
+    string word = "Incredible";
+    cout <<  word << " has a length of " << stringLength(word) << "." << endl;
+
+    cout << endl;
+
+    // All possible strings test
+    char collection1[] = {'a', 'b'};
+    int size1 = 2;
+    int c = 3;
+
+    cout << "All possible strings of length " << c << ":" << endl;
+    printStrings(collection1, size1, "", c);
+
+    cout << endl;
+
+    // Second test
+    char collection2[] = {'a', 'b', 'c', 'd'};
+    int size2 = 4;
+    int c2 = 1;
+
+    cout << "All possible strings of length " << c2 << ":" << endl;
+    printStrings(collection2, size2, "", c2);
+
+    return 0;
+}
+
+
+
+// RECURSIVE FUNCTION LAB PART 1
+/*
 // 1. Write a function that takes an integer as its only argument.
 // Given this integer n, it calculates the nth harmonic number.
 double harmonic(int n) {
@@ -75,3 +131,4 @@ int main() {
 
     return 0;
 }
+*/
